@@ -20,7 +20,6 @@ modules:
       - https://copr.fedorainfracloud.org/coprs/ryanabx/cosmic-epoch/repo/fedora-%OS_VERSION%/ryanabx-cosmic-epoch-fedora-%OS_VERSION%.repo
     install:
       - cosmic-desktop
-      - power-profiles-daemon
       - alacritty
       - gnome-shell-extension-appindicator
       - libappindicator-gtk3
