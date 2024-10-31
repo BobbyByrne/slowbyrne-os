@@ -28,7 +28,6 @@ modules:
     remove:
       - firefox
       - firefox-langpacks
-      - gnome-software-rpm-ostree
       - gnome-software
       - gnome-tour
       - gnome-system-monitor
