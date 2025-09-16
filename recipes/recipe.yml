@@ -4,7 +4,7 @@ name: slowbyrne-os
 description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/silverblue-main
+base-image: ghcr.io/ublue-os/bluefin
 image-version: latest # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
@@ -15,37 +15,65 @@ modules:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
-  - type: rpm-ostree
+  - type: dnf
     repos:
-      - https://copr.fedorainfracloud.org/coprs/ryanabx/cosmic-epoch/repo/fedora-%OS_VERSION%/ryanabx-cosmic-epoch-fedora-%OS_VERSION%.repo
+      cleanup: true # clean up added repos after module is done
+      files:
+        - https://repository.mullvad.net/rpm/stable/mullvad.repo
+      copr:
+        - ryanabx/cosmic-epoch
     install:
-      - cosmic-desktop
-      - alacritty
-      - gnome-shell-extension-appindicator
-      - libappindicator-gtk3
-      - syncthing
-      - rclone
+      packages:
+        - mullvad-vpn
+        - cosmic-desktop
+        - alacritty
+        - gnome-shell-extension-appindicator
+        - libappindicator-gtk3
+        - syncthing
+        - android-tools
+        - http://cdn.filen.io/@filen/desktop/release/latest/Filen_linux_x86_64.rpm
     remove:
-      - firefox
-      - firefox-langpacks
-      - gnome-software
-      - gnome-tour
-      - gnome-system-monitor
-      - ibus-anthy
-      - ibus-anthy-python
-      - ibus-hangul
-      - ibus-libpinyin
-      - malcontent-control
-      - rygel
-      - yelp
+      packages:
+        - firefox
+        - firefox-langpacks
+        - bcache-tools
+        - tmux
 
-  - type: systemd
-    system:
-      disabled:
-        - gdm
-        - sddm
-      enabled:
-        - cosmic-greeter
+  - type: default-flatpaks
+    configurations:
+      - scope: user
+        repo:
+          title: Flathub (user)
+        install:
+          - app.zen_browser.zen
+          - com.bitwarden.desktop
+          - com.github.taiko2k.tauonmb
+          - com.github.xournalpp.xournalpp
+          - com.spotify.Client
+          - com.valvesoftware.Steam
+          - org.freedesktop.Platform.VulkanLayer.MangoHud
+          - com.vscodium.codium
+          - com.vysp3r.ProtonPlus
+          - de.haeckerfelix.Fragments
+          - io.github.hrkfdn.ncspot
+          - org.freecad.FreeCAD
+          - org.gimp.GIMP
+          - org.gnome.Boxes
+          - org.nickvision.tubeconverter
+          - org.qbittorrent.qBittorrent
+          - org.signal.Signal
+          - org.zulip.Zulip
 
+      - notify: true
+        scope: system
+        repo:
+          title: Flathub (system)
+        install: # system flatpaks we want all users to have and not remove
+          - com.github.tchx84.Flatseal
+          - io.missioncenter.MissionCenter
+          - org.gnome.Loupe
+          - org.gnome.Papers
+          - org.libreoffice.LibreOffice
+  
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
 
