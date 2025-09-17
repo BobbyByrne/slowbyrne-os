@@ -1,10 +1,20 @@
 ---
 # yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
 
-type: dnf
+type: rpm-ostree
 remove:
-  packages:
-    - firefox
-    - firefox-langpacks
-    - bcache-tools
-    - tmux
+  - firefox
+  - firefox-langpacks
+  - gnome-software
+  - gnome-tour
+  - gnome-system-monitor
+  - ibus-anthy
+  - ibus-anthy-python
+  - ibus-hangul
+  - ibus-libpinyin
+  - malcontent-control
+  - rygel
+  - yelp
+  - bcache-tools
+  - tmux
+  - nvtop
