@@ -23,6 +23,9 @@ modules:
         - ryanabx/cosmic-epoch
     install:
       packages:
+        - alacritty
+        - syncthing
+        - android-tools
         - cosmic-desktop
         - mullvad-vpn
         - http://cdn.filen.io/@filen/desktop/release/latest/Filen_linux_x86_64.rpm
