@@ -11,7 +11,7 @@ modules:
       # - firefox-langpacks
       # - gnome-software
       # - gnome-software-rpm-ostree
-      - gnome-tour
+      # - gnome-tour
       # - gnome-system-monitor
       - ibus-anthy
       - ibus-anthy-python
