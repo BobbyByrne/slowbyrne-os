@@ -4,37 +4,17 @@ name: odin
 description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/bazzite
+base-image: ghcr.io/ublue-os/bazzite-gnome:stable
 image-version: latest # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
-  - from-file: common-modules.yml
-  - from-file: common-packages.yml
-  - from-file: common-flatpaks.yml
+    - from-file: common-modules.yml
+    - from-file: common-flatpaks.yml
 
-  - type: dnf
-    repos:
-      cleanup: true # clean up added repos after module is done
-      files:
-        - https://repository.mullvad.net/rpm/stable/mullvad.repo
-    install:
-      packages:
-        - mullvad-vpn
-
-  - type: default-flatpaks
-    configurations:
-      - scope: user
+    - type: rpm-ostree
+        repos:
+            - https://repository.mullvad.net/rpm/stable/mullvad.repo
         install:
-          - app.zen_browser.zen
-          - com.valvesoftware.Steam
-          - org.freedesktop.Platform.VulkanLayer.MangoHud
-          - com.vysp3r.ProtonPlus
-          - com.github.taiko2k.tauonmb
-          - com.spotify.Client
-          - com.vscodium.codium
-          - de.haeckerfelix.Fragments
-          - org.nickvision.tubeconverter
-          - org.qbittorrent.qBittorrent
-          - org.signal.Signal
+            - mullvad-vpn
