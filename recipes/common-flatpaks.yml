@@ -1,19 +1,44 @@
 ---
 # yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
 
-type: default-flatpaks
-configurations:
-  - scope: user
-    repo:
-      title: Flathub (user)
-
-  - notify: true
-    scope: system
-    repo:
-      title: Flathub (system)
-    install: # system flatpaks we want all users to have and not remove
-      - com.github.tchx84.Flatseal
-      - io.missioncenter.MissionCenter
-      - org.gnome.Loupe
-      - org.gnome.Papers
-      - org.libreoffice.LibreOffice
+modules:
+    - type: default-flatpaks
+        configurations:
+            - scope: system
+                install: # system flatpaks we want all users to have and not remove
+                    - app/com.github.tchx84.Flatseal
+                    - app/com.mattjakeman.ExtensionManager
+                    - io.missioncenter.MissionCenter
+                    - org.libreoffice.LibreOffice
+                    - app/page.tesk.Refine
+                    - runtime/org.gtk.Gtk3theme.adw-gtk3
+                    - runtime/org.gtk.Gtk3theme.adw-gtk3-dark
+                remove:
+                    - app/com.github.PintaProject.Pinta
+                    - app/com.github.rafostar.Clapper
+                    - app/com.ranfdev.DistroShelf
+                    - app/io.github.flattool.Ignition
+                    - app/io.github.flattool.Warehouse
+                    - app/io.gitlab.adhami3310.Impression
+                    - app/org.gnome.Calculator
+                    - app/org.gnome.Calendar
+                    - app/org.gnome.Characters
+                    - app/org.gnome.Connections
+                    - app/org.gnome.Contacts
+                    - app/org.gnome.DejaDup
+                    - app/org.gnome.FileRoller
+                    - app/org.gnome.Firmware
+                    - app/org.gnome.Logs
+                    - app/org.gnome.Loupe
+                    - app/org.gnome.Maps
+                    - app/org.gnome.NautilusPreviewer
+                    - app/org.gnome.Papers
+                    - app/org.gnome.SimpleScan
+                    - app/org.gnome.TextEditor
+                    - app/org.gnome.Weather
+                    - app/org.gnome.baobab
+                    - app/org.gnome.clocks
+                    - app/org.gnome.font-viewer
+                    - app/org.mozilla.Thunderbird
+                    - app/org.mozilla.firefox
+      
