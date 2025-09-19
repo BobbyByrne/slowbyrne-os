@@ -4,37 +4,22 @@ name: thor
 description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/bluefin
+base-image: ghcr.io/ublue-os/bluefin-nvidia:stable
 image-version: latest # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
-  - from-file: common-modules.yml
-  - from-file: common-packages.yml
-  - from-file: common-flatpaks.yml
+    - from-file: common-modules.yml
+    - from-file: common-packages.yml
+    - from-file: common-flatpaks.yml
 
-  - type: dnf
-    repos:
-      cleanup: true # clean up added repos after module is done
-      files:
-        - https://repository.mullvad.net/rpm/stable/mullvad.repo
-      copr:
-        - ryanabx/cosmic-epoch
-    install:
-      packages:
-        - cosmic-desktop
-        - mullvad-vpn
-
-  - type: default-flatpaks
-    configurations:
-      - scope: user
+    - type: rpm-ostree
+        repos:
+            - https://copr.fedorainfracloud.org/coprs/ryanabx/cosmic-epoch/repo/fedora-%OS_VERSION%/ryanabx-cosmic-epoch-fedora-%OS_VERSION%.repo
+            - https://repository.mullvad.net/rpm/stable/mullvad.repo
         install:
-          - app.zen_browser.zen
-          - com.github.taiko2k.tauonmb
-          - com.spotify.Client
-          - com.valvesoftware.Steam
-          - org.freedesktop.Platform.VulkanLayer.MangoHud
-          - com.vysp3r.ProtonPlus
-          - io.github.hrkfdn.ncspot
-          - org.signal.Signal
+            - cosmic-desktop
+            - syncthing
+            - mullvad-vpn
+            - http://cdn.filen.io/@filen/desktop/release/latest/Filen_linux_x86_64.rpm
