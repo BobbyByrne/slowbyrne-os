@@ -19,7 +19,7 @@ modules:
       - ibus-libpinyin
       - malcontent-control
       - rygel
-      - yelp
+      # - yelp
       - bcache-tools
       - tmux
       - nvtop
