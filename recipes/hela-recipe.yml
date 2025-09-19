@@ -4,23 +4,31 @@ name: hela
 description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/main:stable
+base-image: ghcr.io/ublue-os/bluefin
 image-version: latest # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
-    - from-file: common-modules.yml
-    - from-file: common-packages.yml
-    - from-file: common-flatpaks.yml
+  - from-file: bluefin-adjustments.yml
 
-    - type: rpm-ostree
-        repos:
-            - https://copr.fedorainfracloud.org/coprs/ryanabx/cosmic-epoch/repo/fedora-%OS_VERSION%/ryanabx-cosmic-epoch-fedora-%OS_VERSION%.repo
-            - https://repository.mullvad.net/rpm/stable/mullvad.repo
-        install:
-            - cosmic-desktop
-            - syncthing
-            - mullvad-vpn
-            - http://cdn.filen.io/@filen/desktop/release/latest/Filen_linux_x86_64.rpm
+  - type: rpm-ostree
+    repos:
+      - https://copr.fedorainfracloud.org/coprs/ryanabx/cosmic-epoch/repo/fedora-%OS_VERSION%/ryanabx-cosmic-epoch-fedora-%OS_VERSION%.repo
+      - https://repository.mullvad.net/rpm/stable/mullvad.repo
+    install:
+      - cosmic-desktop
+      - syncthing
+      - mullvad-vpn
+      - http://cdn.filen.io/@filen/desktop/release/latest/Filen_linux_x86_64.rpm
 
+  - type: fonts
+    fonts:
+      nerd-fonts:
+        - FiraCode # don't add spaces or "Nerd Font" suffix.
+
+  - type: chezmoi
+    repository: "https://codeberg.org/bobbyb/dotfiles" # my dotfiles repo
+    file-conflict-policy: replace # override changed files with those from the repo
+
+  - type: signing # this sets up the proper policy & signing files for signed images to work fully

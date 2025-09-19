@@ -4,17 +4,28 @@ name: odin
 description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/bazzite-gnome:stable
+base-image: ghcr.io/ublue-os/bazzite-gnome
 image-version: latest # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
-    - from-file: common-modules.yml
-    - from-file: common-flatpaks.yml
+  - from-file: bazzite-adjustments.yml
 
-    - type: rpm-ostree
-        repos:
-            - https://repository.mullvad.net/rpm/stable/mullvad.repo
-        install:
-            - mullvad-vpn
+  - type: rpm-ostree
+    repos:
+      - https://repository.mullvad.net/rpm/stable/mullvad.repo
+    install:
+      - syncthing
+      - mullvad-vpn
+
+  - type: fonts
+    fonts:
+      nerd-fonts:
+        - FiraCode # don't add spaces or "Nerd Font" suffix.
+
+  - type: chezmoi
+    repository: "https://codeberg.org/bobbyb/dotfiles" # my dotfiles repo
+    file-conflict-policy: replace # override changed files with those from the repo
+
+  - type: signing # this sets up the proper policy & signing files for signed images to work fully
