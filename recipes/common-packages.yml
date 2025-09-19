@@ -1,20 +1,25 @@
 ---
 # yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
 
-type: rpm-ostree
-remove:
-  - firefox
-  - firefox-langpacks
-  - gnome-software
-  - gnome-tour
-  - gnome-system-monitor
-  - ibus-anthy
-  - ibus-anthy-python
-  - ibus-hangul
-  - ibus-libpinyin
-  - malcontent-control
-  - rygel
-  - yelp
-  - bcache-tools
-  - tmux
-  - nvtop
+modules:
+    - type: rpm-ostree
+        remove:
+            - firefox
+            - firefox-langpacks
+            - gnome-software
+            - gnome-software-rpm-ostree
+            - gnome-tour
+            - gnome-system-monitor
+            - ibus-anthy
+            - ibus-anthy-python
+            - ibus-hangul
+            - ibus-libpinyin
+            - malcontent-control
+            - rygel
+            - yelp
+            - bcache-tools
+            - tmux
+            - nvtop
+            - htop
+            - distrobox
+            - totem-video-thumbnailer
