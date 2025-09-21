@@ -1,68 +1,69 @@
 ---
 # yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
 
-# module configuration, executed in order
-# you can include multiple instances of the same module
 modules:
 
-  - type: rpm-ostree
+  - type: dnf
+    repos:
+      files:
+        - https://repository.mullvad.net/rpm/stable/mullvad.repo
+      copr:
+        - atim/starship
+        - lilay/topgrade
+    optfix:
+      - Mullvad VPN
+    install:
+      packages:
+        - android-tools
+        - helix
+        - ripgrep
+        - fd-find
+        - du-dust
+        - gitui
+        - procs
+        - tldr
+        - zoxide
+        - mullvad-vpn
+        - starship
+        - topgrade
     remove:
-      # - firefox
-      # - firefox-langpacks
-      # - gnome-software
-      # - gnome-software-rpm-ostree
-      - gnome-tour
-      # - gnome-system-monitor
-      - ibus-anthy
-      - ibus-anthy-python
-      - ibus-hangul
-      - ibus-libpinyin
-      - malcontent-control
-      - rygel
-      # - yelp
-      - bcache-tools
-      - tmux
-      - nvtop
-      - htop
-      - distrobox
-      # - totem-video-thumbnailer
+      packages:
+        - gnome-tour
+        - gnome-system-monitor
+        - gnome-color-manager
+        - ibus-anthy
+        - ibus-anthy-python
+        - ibus-hangul
+        - ibus-libpinyin
+        - malcontent-control
+        - rygel
+        - input-remapper
+        - ptyxis
+        - bcache-tools
+        - tmux
+        - nvtop
+        - htop
+        - yaru-theme
 
-  # - type: default-flatpaks
-  #   configurations:
-  #     - scope: system
-  #       install: # system flatpaks we want all users to have and not remove
-  #         - app/com.github.tchx84.Flatseal
-  #         - app/com.mattjakeman.ExtensionManager
-  #         - io.missioncenter.MissionCenter
-  #         - org.libreoffice.LibreOffice
-  #         - app/page.tesk.Refine
-  #         - runtime/org.gtk.Gtk3theme.adw-gtk3
-  #         - runtime/org.gtk.Gtk3theme.adw-gtk3-dark
-  #       remove:
-  #         - app/com.github.PintaProject.Pinta
-  #         - app/com.github.rafostar.Clapper
-  #         - app/com.ranfdev.DistroShelf
-  #         - app/io.github.flattool.Ignition
-  #         - app/io.github.flattool.Warehouse
-  #         - app/io.gitlab.adhami3310.Impression
-  #         - app/org.gnome.Calculator
-  #         - app/org.gnome.Calendar
-  #         - app/org.gnome.Characters
-  #         - app/org.gnome.Connections
-  #         - app/org.gnome.Contacts
-  #         - app/org.gnome.DejaDup
-  #         - app/org.gnome.FileRoller
-  #         - app/org.gnome.Firmware
-  #         - app/org.gnome.Logs
-  #         - app/org.gnome.Loupe
-  #         - app/org.gnome.Maps
-  #         - app/org.gnome.NautilusPreviewer
-  #         - app/org.gnome.Papers
-  #         - app/org.gnome.SimpleScan
-  #         - app/org.gnome.TextEditor
-  #         - app/org.gnome.Weather
-  #         - app/org.gnome.baobab
-  #         - app/org.gnome.clocks
-  #         - app/org.gnome.font-viewer
-  #         - app/org.mozilla.Thunderbird
-  #         - app/org.mozilla.firefox
+  - type: default-flatpaks
+    configurations:
+      - notify: false
+      - scope: user
+        install:
+          - com.github.tchx84.Flatseal
+          - com.mattjakeman.ExtensionManager
+          - io.missioncenter.MissionCenter
+          - org.libreoffice.LibreOffice
+          - com.ranfdev.DistroShelf
+
+  - type: fonts
+    fonts:
+      nerd-fonts:
+        - FiraCode
+
+  - type: chezmoi
+    repository: "ssh://git@codeberg.org/bobbyb/dotfiles.git"
+    file-conflict-policy: replace
+
+  # this sets up the proper policy & signing files for signed images to work fully
+  - type: signing

@@ -12,23 +12,11 @@ image-version: latest # latest is also supported if you want new updates ASAP
 modules:
   - from-file: bluefin-adjustments.yml
 
-  - type: rpm-ostree
-    repos:
-      - https://copr.fedorainfracloud.org/coprs/ryanabx/cosmic-epoch/repo/fedora-%OS_VERSION%/ryanabx-cosmic-epoch-fedora-%OS_VERSION%.repo
-      - https://repository.mullvad.net/rpm/stable/mullvad.repo
+  - type: dnf
+    optfix:
+      - Filen
     install:
-      - cosmic-desktop
-      - syncthing
-      - mullvad-vpn
-      - http://cdn.filen.io/@filen/desktop/release/latest/Filen_linux_x86_64.rpm
-
-  - type: fonts
-    fonts:
-      nerd-fonts:
-        - FiraCode # don't add spaces or "Nerd Font" suffix.
-
-  - type: chezmoi
-    repository: "https://codeberg.org/bobbyb/dotfiles" # my dotfiles repo
-    file-conflict-policy: replace # override changed files with those from the repo
-
-  - type: signing # this sets up the proper policy & signing files for signed images to work fully
+      packages:
+        - cosmic-desktop
+        - syncthing
+        - https://cdn.filen.io/@filen/desktop/release/latest/Filen_linux_x86_64.rpm
