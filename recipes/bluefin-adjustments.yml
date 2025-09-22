@@ -44,6 +44,7 @@ modules:
         - nvtop
         - htop
         - yaru-theme
+        - brew
 
   - type: default-flatpaks
     configurations:
