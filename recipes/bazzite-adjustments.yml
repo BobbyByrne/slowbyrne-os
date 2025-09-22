@@ -36,6 +36,11 @@ modules:
         - ibus-libpinyin
         - malcontent-control
         - rygel
+        - input-remapper
+        - lutris
+        - waydroid
+        - waydroid-selinux
+        - webapp-manager
 
   - type: default-flatpaks
     configurations:
