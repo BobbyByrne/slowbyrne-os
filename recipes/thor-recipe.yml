@@ -11,3 +11,15 @@ image-version: latest # latest is also supported if you want new updates ASAP
 # you can include multiple instances of the same module
 modules:
   - from-file: bluefin-adjustments.yml
+
+  - type: dnf
+    optfix:
+      - Filen
+    install:
+      packages:
+        - alacritty
+        - syncthing
+        - https://cdn.filen.io/@filen/desktop/release/latest/Filen_linux_x86_64.rpm
+    remove:
+      packages:
+        - ptyxis

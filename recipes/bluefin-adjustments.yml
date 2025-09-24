@@ -38,7 +38,6 @@ modules:
         - malcontent-control
         - rygel
         - input-remapper
-        - ptyxis
         - bcache-tools
         - tmux
         - nvtop

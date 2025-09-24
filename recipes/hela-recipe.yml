@@ -21,3 +21,6 @@ modules:
         - alacritty
         - syncthing
         - https://cdn.filen.io/@filen/desktop/release/latest/Filen_linux_x86_64.rpm
+    remove:
+      packages:
+        - ptyxis
