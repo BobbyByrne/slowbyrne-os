@@ -21,6 +21,7 @@ modules:
         - alacritty
         - syncthing
         - https://cdn.filen.io/@filen/desktop/release/latest/Filen_linux_x86_64.rpm
+        - https://proton.me/download/mail/linux/ProtonMail-desktop-beta.rpm
     remove:
       packages:
         - ptyxis
