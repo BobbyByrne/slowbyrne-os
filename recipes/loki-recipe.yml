@@ -1,0 +1,29 @@
+# image will be published to ghcr.io/<user>/<name>
+name: loki
+# description will be included in the image's metadata
+description: This is my personal OS image.
+
+# the base image to build on top of (FROM) and the version tag to use
+base-image: ghcr.io/ublue-os/bazzite-dx-nvidia-gnome
+image-version: latest # latest is also supported if you want new updates ASAP
+
+# module configuration, executed in order
+# you can include multiple instances of the same module
+modules:
+  - from-file: bazzite-adjustments.yml
+  - from-file: cosmic-desktop.yml
+
+  - type: dnf
+    repos:
+    optfix:
+      - Filen
+    install:
+      packages:
+        - alacritty
+        - fd-find
+        - git
+        - https://cdn.filen.io/@filen/desktop/release/latest/Filen_linux_x86_64.rpm
+        - syncthing
+    remove:
+      packages:
+        - ptyxis
