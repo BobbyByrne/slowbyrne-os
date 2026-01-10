@@ -14,7 +14,6 @@ modules:
   - from-file: cosmic-desktop.yml
 
   - type: dnf
-    repos:
     optfix:
       - Filen
     install:
