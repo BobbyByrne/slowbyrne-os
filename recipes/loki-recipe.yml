@@ -26,3 +26,9 @@ modules:
     remove:
       packages:
         - ptyxis
+        - docker-ce
+        - docker-ce-cli
+        - docker-compose-plugin
+        - docker-buildx-plugin
+        - containerd.io
+        - zsh
