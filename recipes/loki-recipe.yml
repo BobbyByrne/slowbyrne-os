@@ -4,17 +4,23 @@ name: loki
 description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/bazzite-dx-nvidia-gnome
+base-image: ghcr.io/ublue-os/bazzite-nvidia-open-gnome
 image-version: latest # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
-  - from-file: bazzite-adjustments.yml
   - from-file: cosmic-desktop.yml
 
   - type: dnf
+    repos:
+      files:
+        - https://repository.mullvad.net/rpm/stable/mullvad.repo
+      copr:
+        - atim/starship
+        - lilay/topgrade
     optfix:
+      - Mullvad VPN
       - Filen
     install:
       packages:
@@ -23,12 +29,42 @@ modules:
         - git
         - https://cdn.filen.io/@filen/desktop/release/latest/Filen_linux_x86_64.rpm
         - syncthing
+        - android-tools
+        - helix
+        - ripgrep
+        - du-dust
+        - gitui
+        - procs
+        - tldr
+        - zoxide
+        - mullvad-vpn
+        - starship
+        - topgrade
     remove:
       packages:
-        - ptyxis
-        - docker-ce
-        - docker-ce-cli
-        - docker-compose-plugin
-        - docker-buildx-plugin
-        - containerd.io
-        - zsh
+        - gnome-system-monitor
+        - gnome-color-manager
+        - ibus-anthy
+        - ibus-anthy-python
+        - ibus-hangul
+        - ibus-libpinyin
+        - malcontent-control
+        - rygel
+        - input-remapper
+        - lutris
+        - waydroid
+        - waydroid-selinux
+        - webapp-manager
+
+  - type: fonts
+    fonts:
+      nerd-fonts:
+        - FiraCode
+        - Lilex
+
+  - type: chezmoi
+    repository: "ssh://git@codeberg.org/bobbyb/dotfiles.git"
+    file-conflict-policy: replace
+
+  # this sets up the proper policy & signing files for signed images to work fully
+  - type: signing
