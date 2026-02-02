@@ -8,10 +8,3 @@ modules:
       with-optional: true
       packages:
         - cosmic-desktop
-
-  - type: systemd
-    system:
-      disabled:
-        - gdm.service
-      enabled:
-        - cosmic-greeter.service

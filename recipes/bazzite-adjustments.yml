@@ -2,30 +2,7 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
 
 modules:
-
   - type: dnf
-    repos:
-      files:
-        - https://repository.mullvad.net/rpm/stable/mullvad.repo
-      copr:
-        - atim/starship
-        - lilay/topgrade
-    optfix:
-      - Mullvad VPN
-    install:
-      packages:
-        - android-tools
-        - helix
-        - ripgrep
-        - fd-find
-        - du-dust
-        - gitui
-        - procs
-        - tldr
-        - zoxide
-        - mullvad-vpn
-        - starship
-        - topgrade
     remove:
       packages:
         - gnome-system-monitor
@@ -42,14 +19,9 @@ modules:
         - waydroid-selinux
         - webapp-manager
 
-  - type: fonts
-    fonts:
-      nerd-fonts:
-        - FiraCode
-
-  - type: chezmoi
-    repository: "ssh://git@codeberg.org/bobbyb/dotfiles.git"
-    file-conflict-policy: replace
-
-  # this sets up the proper policy & signing files for signed images to work fully
-  - type: signing
+  - type: systemd
+    system:
+      masked:
+        - brew-setup.service
+        - brew-update.timer
+        - brew-upgrade.timer

@@ -1,0 +1,27 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
+
+modules:
+
+  - type: dnf
+    install:
+      packages:
+        - libappindicator-gtk3
+        - gnome-shell-extension-appindicator
+        - gnome-tweaks
+    remove:
+      packages:
+        - firefox-langpacks
+        - firefox
+        - gnome-software
+        - gnome-system-monitor
+        - gnome-color-manager
+        - gnome-tour
+        - ptyxis
+        - yelp
+        - ibus-anthy
+        - ibus-anthy-python
+        - ibus-hangul
+        - ibus-libpinyin
+        - malcontent-control
+        - rygel

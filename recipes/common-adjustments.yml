@@ -1,0 +1,40 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
+
+modules:
+  - type: dnf
+    repos:
+      files:
+        - https://repository.mullvad.net/rpm/stable/mullvad.repo
+      copr:
+        - atim/starship
+        - lilay/topgrade
+    optfix:
+      - Mullvad VPN
+    install:
+      packages:
+        - fd-find
+        - syncthing
+        - helix
+        - ripgrep
+        - du-dust
+        - procs
+        - tldr
+        - zoxide
+        - mullvad-vpn
+        - starship
+        - topgrade
+
+  - type: systemd
+    system:
+      enabled:
+        - mullvad-daemon.service
+
+  - type: fonts
+    fonts:
+      nerd-fonts:
+        - FiraCode
+        - Lilex
+
+  # this sets up the proper policy & signing files for signed images to work fully
+  - type: signing
