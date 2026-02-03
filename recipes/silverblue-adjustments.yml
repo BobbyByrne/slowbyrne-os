@@ -9,7 +9,6 @@ modules:
         - libappindicator-gtk3
         - gnome-shell-extension-appindicator
         - gnome-tweaks
-        - bazaar
     remove:
       packages:
         - firefox-langpacks
