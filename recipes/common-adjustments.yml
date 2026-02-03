@@ -31,7 +31,7 @@ modules:
         - tailscale
         - steam
         - steam-devices
-        - manguhud
+        - mangohud
         - snapper
         - btrfs-assistant
 
@@ -49,3 +49,4 @@ modules:
 
   # this sets up the proper policy & signing files for signed images to work fully
   - type: signing
+
