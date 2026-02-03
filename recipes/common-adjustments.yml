@@ -4,7 +4,9 @@
 modules:
   - type: dnf
     repos:
+      cleanup: true # clean up added repos after module is done
       files:
+        - https://pkgs.tailscale.com/stable/fedora/tailscale.repo
         - https://repository.mullvad.net/rpm/stable/mullvad.repo
         - vscodium.repo
       copr:
@@ -26,11 +28,13 @@ modules:
         - starship
         - topgrade
         - codium
+        - tailscale
 
   - type: systemd
     system:
       enabled:
         - mullvad-daemon.service
+        - tailscaled.service
 
   - type: fonts
     fonts:
