@@ -6,6 +6,7 @@ modules:
     repos:
       files:
         - https://repository.mullvad.net/rpm/stable/mullvad.repo
+        - vscodium.repo
       copr:
         - atim/starship
         - lilay/topgrade
@@ -24,6 +25,7 @@ modules:
         - mullvad-vpn
         - starship
         - topgrade
+        - codium
 
   - type: systemd
     system:
