@@ -29,6 +29,11 @@ modules:
         - topgrade
         - codium
         - tailscale
+        - steam
+        - steam-devices
+        - manguhud
+        - snapper
+        - btrfs-assistant
 
   - type: systemd
     system:
