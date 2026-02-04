@@ -34,6 +34,7 @@ modules:
         - mangohud
         - snapper
         - btrfs-assistant
+        - seahorse
 
   - type: systemd
     system:
