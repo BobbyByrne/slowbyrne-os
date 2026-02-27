@@ -35,6 +35,7 @@ modules:
         - snapper
         - btrfs-assistant
         - seahorse
+        - xdg-terminal-exec
 
   - type: systemd
     system:
