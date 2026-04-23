@@ -4,8 +4,8 @@ name: loki
 description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/silverblue-nvidia
-image-version: latest # latest is also supported if you want new updates ASAP
+base-image: ghcr.io/ublue-os/silverblue-main
+image-version: beta
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
@@ -13,24 +13,6 @@ modules:
   - from-file: silverblue-adjustments.yml
   - from-file: cosmic-desktop.yml
   - from-file: common-adjustments.yml
-
-  - type: dnf
-    repos:
-      files:
-        - https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo
-    optfix:
-      - Filen
-    install:
-      packages:
-        - alacritty
-        - git
-        - https://cdn.filen.io/@filen/desktop/release/latest/Filen_linux_x86_64.rpm
-        - android-tools
-        - gitui
-        - nvidia-container-toolkit
-        - nvidia-container-toolkit-base
-        - libnvidia-container-tools
-        - libnvidia-container1
 
   - type: chezmoi
     repository: "ssh://git@codeberg.org/bobbyb/dotfiles.git"
