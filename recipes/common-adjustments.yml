@@ -8,7 +8,7 @@ modules:
       files:
         - https://pkgs.tailscale.com/stable/fedora/tailscale.repo
         - https://repository.mullvad.net/rpm/stable/mullvad.repo
-        - vscodium.repo
+        - vscode.repo
     optfix:
       - Mullvad VPN
       - Filen

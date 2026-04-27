@@ -7,21 +7,89 @@ modules:
     install:
       packages:
         - libappindicator-gtk3
+
+  - type: dnf
+    install:
+      packages:
         - gnome-shell-extension-appindicator
-        - gnome-tweaks
+
+  - type: dnf
     remove:
       packages:
         - firefox-langpacks
+
+  - type: dnf
+    remove:
+      packages:
         - firefox
+
+  - type: dnf
+    remove:
+      packages:
         - gnome-software
+
+  - type: dnf
+    remove:
+      packages:
         - gnome-system-monitor
+
+  - type: dnf
+    remove:
+      packages:
         - gnome-color-manager
+
+  - type: dnf
+    remove:
+      packages:
         - gnome-tour
+
+  - type: dnf
+    remove:
+      packages:
         - ptyxis
+
+  - type: dnf
+    remove:
+      packages:
         - yelp
+
+  - type: dnf
+    remove:
+      packages:
         - ibus-anthy
+
+  - type: dnf
+    remove:
+      packages:
         - ibus-anthy-python
+
+  - type: dnf
+    remove:
+      packages:
         - ibus-hangul
+
+  - type: dnf
+    remove:
+      packages:
         - ibus-libpinyin
+
+  - type: dnf
+    remove:
+      packages:
         - malcontent-control
+
+  - type: dnf
+    remove:
+      packages:
         - rygel
+
+  - type: dnf
+    remove:
+      packages:
+        - htop
+
+  - type: dnf
+    remove:
+      packages:
+        - nvtop
+
