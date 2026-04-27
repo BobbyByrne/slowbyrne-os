@@ -1,0 +1,165 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
+
+modules:
+  - type: dnf
+    remove:
+      auto-remove: true
+      packages:
+        - gnome-color-manager
+
+  - type: dnf
+    remove:
+      auto-remove: true
+      packages:
+        - ibus-anthy
+
+  - type: dnf
+    remove:
+      auto-remove: true
+      packages:
+        - ibus-anthy-python
+
+  - type: dnf
+    remove:
+      auto-remove: true
+      packages:
+        - ibus-hangul
+
+  - type: dnf
+    remove:
+      auto-remove: true
+      packages:
+        - ibus-libpinyin
+
+  - type: dnf
+    remove:
+      auto-remove: true
+      packages:
+        - rygel
+
+  - type: dnf
+    remove:
+      auto-remove: true
+      packages:
+        - input-remapper
+
+  - type: dnf
+    remove:
+      auto-remove: true
+      packages:
+        - lutris
+
+  - type: dnf
+    remove:
+      auto-remove: true
+      packages:
+        - Sunshine
+
+  - type: dnf
+    remove:
+      auto-remove: true
+      packages:
+        - qt6ct
+
+  - type: dnf
+    remove:
+      auto-remove: true
+      packages:
+        - qt5ct
+
+  - type: dnf
+    remove:
+      auto-remove: true
+      packages:
+        - sysprof
+
+  - type: dnf
+    remove:
+      auto-remove: true
+      packages:
+        - waydroid
+
+  - type: dnf
+    remove:
+      auto-remove: true
+      packages:
+        - waydroid-selinux
+
+  - type: dnf
+    remove:
+      auto-remove: true
+      packages:
+        - webapp-manager
+
+  - type: systemd
+    system:
+      masked:
+        - brew-setup.service
+        - brew-update.timer
+        - brew-upgrade.timer
+
+  - type: script
+    snippets:
+      - "rm -rf /home/linuxbrew"
+
+  - type: script
+    snippets:
+      - "rm -rf /usr/share/applications/bbrew.desktop"
+
+  - type: script
+    snippets:
+      - "rm -rf /usr/share/applications/Waydroid"
+
+  - type: script
+    snippets:
+      - "rm -rf /usr/share/applications/waydroid-container-restart.desktop"
+
+  - type: script
+    snippets:
+      - "rm -rf /usr/share/applications/hhd-ui"
+
+  - type: script
+    snippets:
+      - "rm -rf /usr/share/applications/hhd-ui.desktop"
+
+  - type: script
+    snippets:
+      - "rm -rf /usr/share/applications/gamemode-nested.desktop"
+
+  - type: script
+    snippets:
+      - "rm -rf /usr/share/applications/com.gerbilsoft.rom-properties.rp-config.desktop"
+
+  - type: script
+    snippets:
+      - "rm -rf /usr/bin/waydroid-choose-gpu"
+
+  - type: script
+    snippets:
+      - "rm -rf /usr/bin/waydroid-launcher"
+
+  - type: script
+    snippets:
+      - "rm -rf /usr/bin/hhd"
+
+  - type: script
+    snippets:
+      - "rm -rf /usr/bin/hhd-ui"
+
+  - type: script
+    snippets:
+      - "rm -rf /usr/bin/hhdctl"
+
+  - type: script
+    snippets:
+      - "rm -rf /usr/bin/hhd.contrib"
+
+  - type: script
+    snippets:
+      - "rm -rf /usr/bin/hhd.steamos"
+
+  # - type: script
+    # scripts:
+    #   - myscript.sh # example: run files/scripts/myscript.sh
+    #   - myscript.nu # example: run files/scripts/myscript.nu

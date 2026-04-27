@@ -5,29 +5,16 @@ modules:
   - type: dnf
     remove:
       packages:
-        - gnome-system-monitor
         - gnome-color-manager
         - ibus-anthy
         - ibus-anthy-python
         - ibus-hangul
         - ibus-libpinyin
-        - malcontent-control
         - rygel
         - input-remapper
         - lutris
-        - sunshine
-        - hhd
-        - gamemode-nested
-        - rp-config
-        - bbrew-helper
-        - qt6ct
-        - qt5ct
-        - sysprof
-        - virt-manager
         - waydroid
         - waydroid-selinux
-        - waydroid-launcher
-        - waydroid-choose-gpu
         - webapp-manager
 
   - type: systemd

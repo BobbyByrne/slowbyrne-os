@@ -11,7 +11,7 @@ image-version: latest
 # you can include multiple instances of the same module
 modules:
   #- from-file: silverblue-adjustments.yml
-  - from-file: bazzite-adjustments.yml
+  - from-file: bazzite-dx-adjustments.yml
   - from-file: cosmic-desktop.yml
   - from-file: common-adjustments.yml
 
