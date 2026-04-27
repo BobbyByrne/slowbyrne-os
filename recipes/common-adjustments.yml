@@ -2,44 +2,135 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
 
 modules:
+
+# Mullvad VPN
   - type: dnf
     repos:
-      cleanup: true # clean up added repos after module is done
       files:
-        - https://pkgs.tailscale.com/stable/fedora/tailscale.repo
         - https://repository.mullvad.net/rpm/stable/mullvad.repo
-        - vscode.repo
     optfix:
       - Mullvad VPN
-      - Filen
     install:
       packages:
-        - alacritty
-        - xdg-terminal-exec
-        - git
-        - android-tools
         - mullvad-vpn
-        - https://cdn.filen.io/@filen/desktop/release/latest/Filen_linux_x86_64.rpm
-        - syncthing
-        - helix
-        - gitui
-        - codium
-        - tailscale
-        - steam
-        - steam-devices
-        - mangohud
-        - fd-find
-        - ripgrep
-        - du-dust
-        - procs
-        - tldr
-        - zoxide
 
   - type: systemd
     system:
       enabled:
         - mullvad-daemon.service
+
+# Tailscale
+  - type: dnf
+    repos:
+      files:
+        - https://pkgs.tailscale.com/stable/fedora/tailscale.repo
+    install:
+      packages:
+        - tailscale
+
+  - type: systemd
+    system:
+      enabled:
         - tailscaled.service
+
+# VS Code / Codium
+  - type: dnf
+    repos:
+      files:
+        - vscode.repo
+        - vscodium.repo
+    install:
+      packages:
+        - code
+        - codium
+
+# Filen.io
+  - type: dnf
+    optfix:
+      - Filen
+    install:
+      packages:
+        - https://cdn.filen.io/@filen/desktop/release/latest/Filen_linux_x86_64.rpm
+
+  - type: dnf
+    install:
+      packages:
+        - alacritty
+
+  - type: dnf
+    install:
+      packages:
+        - xdg-terminal-exec
+
+  - type: dnf
+    install:
+      packages:
+        - git
+
+  - type: dnf
+    install:
+      packages:
+        - android-tools
+
+  - type: dnf
+    install:
+      packages:
+        - syncthing
+
+  - type: dnf
+    install:
+      packages:
+        - helix
+
+  - type: dnf
+    install:
+      packages:
+        - gitui
+
+  - type: dnf
+    install:
+      packages:
+        - steam
+
+  - type: dnf
+    install:
+      packages:
+        - steam-devices
+
+  - type: dnf
+    install:
+      packages:
+        - mangohud
+
+  - type: dnf
+    install:
+      packages:
+        - fd-find
+
+  - type: dnf
+    install:
+      packages:
+        - ripgrep
+
+  - type: dnf
+    install:
+      packages:
+        - du-dust
+
+  - type: dnf
+    install:
+      packages:
+        - procs
+
+  - type: dnf
+    install:
+      packages:
+        - tldr
+
+  - type: dnf
+    install:
+      packages:
+        - zoxide
 
   - type: fonts
     fonts:
@@ -48,4 +139,3 @@ modules:
 
   # this sets up the proper policy & signing files for signed images to work fully
   - type: signing
-
