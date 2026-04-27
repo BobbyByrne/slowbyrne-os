@@ -15,8 +15,19 @@ modules:
         - rygel
         - input-remapper
         - lutris
+        - sunshine
+        - hhd
+        - gamemode-nested
+        - rp-config
+        - bbrew-helper
+        - qt6ct
+        - qt5ct
+        - sysprof
+        - virt-manager
         - waydroid
         - waydroid-selinux
+        - waydroid-launcher
+        - waydroid-choose-gpu
         - webapp-manager
 
   - type: systemd
