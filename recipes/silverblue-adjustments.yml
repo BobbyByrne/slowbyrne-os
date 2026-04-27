@@ -93,3 +93,17 @@ modules:
       packages:
         - nvtop
 
+  - type: dnf
+    remove:
+      packages:
+        - qt5ct
+
+  - type: dnf
+    remove:
+      packages:
+        - qt6ct
+
+  - type: dnf
+    remove:
+      packages:
+        - dconf-editor
